@@ -68,15 +68,6 @@ private:
 protected:
   void subscribeImpl(
     rclcpp::Node * node,
-    const std::string &,
-    const Callback &,
-    rmw_qos_profile_t) override
-  {
-    RCLCPP_FATAL(node->get_logger(), "not used in Humble+");
-  }
-
-  void subscribeImpl(
-    rclcpp::Node * node,
     const std::string & base_topic,
     const Callback & callback,
     rmw_qos_profile_t custom_qos,

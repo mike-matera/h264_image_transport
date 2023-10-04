@@ -180,7 +180,9 @@ public:
       throw std::runtime_error("Could not open the v4l device");
     }
 
-    h264_pub_ = create_publisher<h264_msgs::msg::Packet>("image_raw/h264", QUEUE_SIZE);
+    h264_pub_ = create_publisher<h264_msgs::msg::Packet>("image_raw/h264",
+      rclcpp::QoS(1).best_effort().durability_volatile()
+    );
 
     // Parse camera info
     // readCalibration will crash if file_name is ""
